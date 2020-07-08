@@ -612,3 +612,15 @@ waitx(int *wtime, int *rtime)
   }
 }
 
+
+// Implementation for the set_priority function
+int
+set_priority(int priority)
+{
+  int old_priority = myproc()->priority;
+  myproc()->priority = priority;
+  yield();
+  return old_priority;
+}
+
+
