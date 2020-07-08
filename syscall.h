@@ -22,3 +22,4 @@
 #define SYS_close  21
 #define SYS_pinfo  22  // Assigning a new number for our new systemcall
 #define SYS_waitx  23  // Assigning a new number for our new waitx systemcall
+#define SYS_set_priority  24  // Assigning a new number for our new setpr systemcall
