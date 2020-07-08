@@ -117,7 +117,7 @@ found:
   p->etime = 0;             // End time
   p->rtime = 0;             // Total time
   p->iotime = 0;            // I/O time
-
+  p->priority = 60			// Default = 60
   return p;
 }
 
