@@ -98,3 +98,23 @@ sys_pinfo(void)
   argptr (0, (void*)&pi, sizeof(*pi));
   return pinfo(pi);
 }
+
+// call the waitx function with the right parameteres
+int 
+sys_waitx(void)
+{
+  int *wtime, *rtime;
+  
+  if(argptr(0, (char**)&wtime, sizeof(int)) < 0)
+  {
+    return -1;
+  }
+
+  if(argptr(1, (char**)&rtime, sizeof(int)) < 0)
+  {
+    return -1;
+  }
+
+  return waitx(wtime, rtime);
+}
+
