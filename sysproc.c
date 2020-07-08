@@ -118,3 +118,16 @@ sys_waitx(void)
   return waitx(wtime, rtime);
 }
 
+// call the set_priority with the right parameteres
+int
+sys_set_priority(void)
+{
+  int priority;
+  if(argptr(0, (char**)&priority, sizeof(int)) < 0)
+  {
+    return -1;
+  }
+  return set_priority(priority);
+}
+
+
