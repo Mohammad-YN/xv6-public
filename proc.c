@@ -330,18 +330,31 @@ void
 scheduler(void)
 {
   struct proc *p;
+  struct proc *p1;
   struct cpu *c = mycpu();
   c->proc = 0;
   
   for(;;){
     // Enable interrupts on this processor.
     sti();
-
+	
+	struct proc *maxP;
+	
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
+        
+      maxP = p;
+      for (p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+        if (p1->state != RUNNABLE)
+          continue;
+        if (maxP->priority > p1->priority)
+          maxP = p1;
+      }
+      p = maxP;
+
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
