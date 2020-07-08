@@ -104,6 +104,7 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_pinfo(void);  // Add the new system call function prototype
+extern int sys_waitx(void);  // Add the new system call waitx function prototype
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -128,6 +129,7 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_pinfo]   sys_pinfo,  // Add a pointer to the new system call function
+[SYS_waitx]   sys_waitx,  // Add a pointer to the new system call waitx function
 };
 
 void
