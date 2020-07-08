@@ -579,7 +579,7 @@ pinfo(struct proc_info* pi)
 
 
 int
-wait(void)
+waitx(int *wtime, int *rtime)
 {
   struct proc *p;
   int havekids, pid;
